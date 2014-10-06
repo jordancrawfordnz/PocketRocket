@@ -2,5 +2,6 @@
 
     <string name="app_name">Pocket Rocket</string>
     <string name="script_list_title">Scripts</string>
+    <string name="server_browser_title">Servers</string>
 
 </resources>
