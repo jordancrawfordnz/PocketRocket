@@ -1,4 +1,4 @@
-package com.pocketrocket.v1.ui;
+package com.sneakyrocket.pocketrocket.v1.ui;
 
 import com.sneakyrocket.pocketrocket.R;
 
