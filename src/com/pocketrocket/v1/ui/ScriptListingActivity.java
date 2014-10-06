@@ -1,5 +1,7 @@
 package com.pocketrocket.v1.ui;
 
+import com.sneakyrocket.pocketrocket.R;
+
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
@@ -15,6 +17,8 @@ public class ScriptListingActivity extends ActionBarActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//TODO: Inflate layout
+		setTitle(R.string.script_list_title);
+		setContentView(R.layout.script_list_layout);
+		//TODO: add list of scripts
 	}
 }
