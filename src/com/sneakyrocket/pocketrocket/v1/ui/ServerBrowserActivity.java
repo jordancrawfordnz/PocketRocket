@@ -4,6 +4,7 @@ import com.sneakyrocket.pocketrocket.R;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
 
 /**
  * ServerBrowserActivity is the activity used to view, add, and remove
@@ -20,5 +21,11 @@ public class ServerBrowserActivity extends ActionBarActivity {
 			setTitle(R.string.server_browser_title);
 			setContentView(R.layout.server_browser_layout);
 			//TODO: add list of servers
+		}
+		
+		@Override
+		public boolean onCreateOptionsMenu(Menu menu) {
+		    getMenuInflater().inflate(R.menu.server_browser_menu, menu);
+		    return super.onCreateOptionsMenu(menu);
 		}
 }
