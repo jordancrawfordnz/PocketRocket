@@ -9,6 +9,11 @@ import java.net.Socket;
 public class Connection {
 	
 	private Socket socket;
+	/*
+	public Connection()
+	{
+	}
+	*/
 	
 	public Connection(InetAddress server, int port) throws IOException
 	{

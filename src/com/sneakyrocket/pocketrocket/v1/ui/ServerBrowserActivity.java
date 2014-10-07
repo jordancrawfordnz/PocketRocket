@@ -1,6 +1,8 @@
 package com.sneakyrocket.pocketrocket.v1.ui;
 
 import com.sneakyrocket.pocketrocket.R;
+import com.sneakyrocket.pocketrocket.v1.core.Connection;
+import com.sneakyrocket.pocketrocket.v1.core.response.Response;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
