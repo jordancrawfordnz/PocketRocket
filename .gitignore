@@ -16,6 +16,8 @@ gen\
 *.swp
 *~.nib
 local.properties
+project.properties
+
 .classpath
 .settings/
 .settings\
