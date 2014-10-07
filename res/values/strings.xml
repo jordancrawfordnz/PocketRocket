@@ -4,5 +4,9 @@
     <string name="script_list_title">Scripts</string>
     <string name="server_browser_title">Servers</string>
     <string name="add_server">Add Server</string>
+    <string name="server_name">Server Name</string>
+    <string name="server_address">Server Address</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 
 </resources>
