@@ -1,6 +1,7 @@
 package com.sneakyrocket.pocketrocket.v1.ui;
 
 import com.sneakyrocket.pocketrocket.R;
+import com.sneakyrocket.pocketrocket.v1.remote.Server;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -49,7 +50,7 @@ public class ServerBrowserActivity extends ActionBarActivity {
 		public boolean onOptionsItemSelected(MenuItem item) {
 			switch (item.getItemId()) {
 			case R.id.action_new_server:
-				ServerValidator validator = new ServerValidator();
+				ServerValidator validator = new ServerValidator(this);
 				LayoutInflater inflater = getLayoutInflater();
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
 				builder.setTitle(R.string.add_server);
@@ -62,5 +63,13 @@ public class ServerBrowserActivity extends ActionBarActivity {
 			default:
 				return false;
 			}
+		}
+		
+		/**
+		 * Add the given server to the list of known servers
+		 * @param server
+		 */
+		public void addServer(Server server) {
+			
 		}
 }
