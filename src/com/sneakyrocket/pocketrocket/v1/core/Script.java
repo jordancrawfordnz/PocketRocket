@@ -17,6 +17,7 @@ public class Script {
 		this.session = session;
 	}
 	
+	// May return null if no icon is found
 	public Bitmap getIcon()
 	{
 		if(this.icon == null)
