@@ -1,28 +1,27 @@
 package com.sneakyrocket.pocketrocket.v1.core.response;
 
+import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 
 
-import com.sneakyrocket.pocketrocket.v1.core.Connection;
-
 public abstract class Response {
 	protected String args;
-	protected Connection connection;
+	protected InputStream inputStream;
 	
 	// Args is anything after the ":" in the string
-	public Response(String args, Connection connection)
+	public Response(String args, InputStream inputStream)
 	{
-		if(args == null || connection == null)
+		if(args == null || inputStream == null)
 			throw new IllegalArgumentException();
 		this.args = args;
-		this.connection = connection;
+		this.inputStream = inputStream;
 	}
 	
 	// TODO Implement as a singleton instead?
 	
-	public static void Handle(String responseLine, Connection connection)
+	public static void Handle(String responseLine, InputStream inputStream)
 	{
 		if(responseHandlers == null)
 		{
@@ -30,7 +29,7 @@ public abstract class Response {
 			responseHandlers.put(100, Done.class);
 			
 		}
-		if(responseLine == null || connection == null)
+		if(responseLine == null || inputStream == null)
 			throw new IllegalArgumentException();
 		
 		String[] splitResponse = responseLine.split(" ",2);
@@ -57,8 +56,8 @@ public abstract class Response {
 			Class<? extends Response> handlerClass = responseHandlers.get(code);
 			try
 			{
-				Constructor<? extends Response> constructHandler = handlerClass.getDeclaredConstructor(String.class,Connection.class);
-				Response handler = constructHandler.newInstance(args, connection);
+				Constructor<? extends Response> constructHandler = handlerClass.getDeclaredConstructor(String.class,InputStream.class);
+				Response handler = constructHandler.newInstance(args, inputStream);
 				((Done)handler).getArgs();
 			}
 			// If anything went wrong with finding the constructors, don't bother fixing it.

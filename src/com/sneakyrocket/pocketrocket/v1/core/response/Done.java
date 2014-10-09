@@ -1,13 +1,14 @@
 package com.sneakyrocket.pocketrocket.v1.core.response;
 
-import com.sneakyrocket.pocketrocket.v1.core.Connection;
+import java.io.InputStream;
 
 public class Done extends Response {
-	public Done(String args, Connection connection)
+	public Done(String args, InputStream inputStream)
 	{
-		super(args, connection);
+		super(args, inputStream);
 	}
 	
+	// TODO Remove when no longer needed
 	public void getArgs()
 	{
 		System.out.println("DONE: " + args);
