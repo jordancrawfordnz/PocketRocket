@@ -6,6 +6,7 @@
     <string name="add_server">Add Server</string>
     <string name="server_name">Server Name</string>
     <string name="server_address">Server Address</string>
+    <string name="server_port">Server Port</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
 

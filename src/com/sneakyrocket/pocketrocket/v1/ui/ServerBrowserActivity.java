@@ -1,8 +1,6 @@
 package com.sneakyrocket.pocketrocket.v1.ui;
 
 import com.sneakyrocket.pocketrocket.R;
-import com.sneakyrocket.pocketrocket.v1.core.Connection;
-import com.sneakyrocket.pocketrocket.v1.core.response.Response;
 import com.sneakyrocket.pocketrocket.v1.remote.Server;
 
 import android.app.AlertDialog;
@@ -11,6 +9,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
 
 /**
  * ServerBrowserActivity is the activity used to view, add, and remove
@@ -19,7 +20,13 @@ import android.view.MenuItem;
  *
  */
 public class ServerBrowserActivity extends ActionBarActivity {
+	private BasicListAdapter adapter;
+	private ListView serverListView;
 	//TODO: add member variables as classes are made
+	
+	public ServerBrowserActivity() {
+		adapter = new BasicListAdapter();
+	}
 	
 		@Override
 		/**
@@ -31,6 +38,8 @@ public class ServerBrowserActivity extends ActionBarActivity {
 			super.onCreate(savedInstanceState);
 			setTitle(R.string.server_browser_title);
 			setContentView(R.layout.server_browser_layout);
+			serverListView = (ListView) findViewById(R.id.serverList);
+			serverListView.setAdapter(adapter);
 			//TODO: add list of servers
 		}
 		
@@ -52,11 +61,12 @@ public class ServerBrowserActivity extends ActionBarActivity {
 		public boolean onOptionsItemSelected(MenuItem item) {
 			switch (item.getItemId()) {
 			case R.id.action_new_server:
-				ServerValidator validator = new ServerValidator(this);
 				LayoutInflater inflater = getLayoutInflater();
+				View dialogView = inflater.inflate(R.layout.add_server_layout, serverListView, false);
+				ServerValidator validator = new ServerValidator(dialogView, this);
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
 				builder.setTitle(R.string.add_server);
-				builder.setView(inflater.inflate(R.layout.add_server_layout, null));
+				builder.setView(dialogView);
 				builder.setPositiveButton(R.string.ok, validator);
 				builder.setNegativeButton(R.string.cancel, validator);
 				builder.create().show();
@@ -67,11 +77,12 @@ public class ServerBrowserActivity extends ActionBarActivity {
 			}
 		}
 		
-		/**
-		 * Add the given server to the list of known servers
-		 * @param server
-		 */
 		public void addServer(Server server) {
-			
+			View serverView = getLayoutInflater().inflate(R.layout.server_layout, serverListView, false);
+			TextView serverName = (TextView) serverView.findViewById(R.id.serverName);
+			TextView serverDetails = (TextView) serverView.findViewById(R.id.serverDetails);
+			serverName.setText(server.getName());
+			serverDetails.setText(server.getAddress() + ":" + server.getPort());
+			adapter.addView(serverView);
 		}
 }
