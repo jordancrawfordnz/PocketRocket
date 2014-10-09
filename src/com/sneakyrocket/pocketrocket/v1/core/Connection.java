@@ -22,10 +22,6 @@ public class Connection {
 		this.socket = new Socket(server, port);
 	}
 	
-	public OutputStream getOutput() throws IOException
-	{
-		return socket.getOutputStream();
-	}
 	
 	public InputStream getInput() throws IOException
 	{
