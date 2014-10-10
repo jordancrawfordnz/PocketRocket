@@ -1,6 +1,6 @@
 package com.sneakyrocket.pocketrocket.v1.core.command;
 
-import java.io.OutputStream;
+import java.io.InputStream;
 
 import com.sneakyrocket.pocketrocket.v1.core.Connection;
 import com.sneakyrocket.pocketrocket.v1.core.Script;
@@ -15,7 +15,7 @@ public class Run extends Command {
 		this.script = script;
 	}
 	
-	public OutputStream getStream()
+	public InputStream getStream()
 	{
 		// TODO Implement
 		throw new UnsupportedOperationException();
