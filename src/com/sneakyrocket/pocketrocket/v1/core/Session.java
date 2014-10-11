@@ -4,6 +4,9 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.sneakyrocket.pocketrocket.v1.remote.Server;
+
 import android.graphics.Bitmap;
 
 public class Session {
@@ -21,13 +24,13 @@ public class Session {
 		return instance;
 	}
 	
-	public Session(String target) throws UnknownHostException
+	public Session(Server target) throws UnknownHostException
 	{
 		if(target == null)
 		{
 			throw new IllegalArgumentException();
 		}
-		this.server = InetAddress.getByName(target);
+		this.server = InetAddress.getByName(target.getAddress());
 		
 		// TODO Create a ServerListingActivity
 		// TODO Determine port for session to communicate on.
