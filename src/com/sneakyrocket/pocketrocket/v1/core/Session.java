@@ -8,17 +8,26 @@ import android.content.Context;
 import android.graphics.Bitmap;
 
 public class Session {
+	private static Session instance = null;
 	
 	private InetAddress server;
-	private Context context;
 	
-	public Session(String target, Context context) throws UnknownHostException
+	public synchronized void setCurrentSession(Session session)
 	{
-		if(target == null || context == null)
+		instance = session;
+	}
+	
+	public synchronized Session getCurrentSession(Session session)
+	{
+		return instance;
+	}
+	
+	public Session(String target) throws UnknownHostException
+	{
+		if(target == null)
 		{
 			throw new IllegalArgumentException();
 		}
-		this.context = context;
 		this.server = InetAddress.getByName(target);
 		
 		// TODO Create a ServerListingActivity
