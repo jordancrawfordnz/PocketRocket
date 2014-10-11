@@ -4,7 +4,6 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-import android.content.Context;
 import android.graphics.Bitmap;
 
 public class Session {
@@ -12,12 +11,12 @@ public class Session {
 	
 	private InetAddress server;
 	
-	public synchronized void setCurrentSession(Session session)
+	public static synchronized void setCurrentSession(Session session)
 	{
 		instance = session;
 	}
 	
-	public synchronized Session getCurrentSession()
+	public static synchronized Session getCurrentSession()
 	{
 		return instance;
 	}
