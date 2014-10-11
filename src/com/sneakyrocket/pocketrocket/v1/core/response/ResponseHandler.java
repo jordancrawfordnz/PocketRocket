@@ -37,6 +37,7 @@ public class ResponseHandler extends Thread {
 			responseHandlers.put(100, Done.class);
 			responseHandlers.put(101, Success.class);
 			responseHandlers.put(102, OkText.class);
+			//responseHandlers.put(103, OkBytes.class);
 			responseHandlers.put(300, CatastrophicFailure.class);
 			responseHandlers.put(301, Failure.class);
 			responseHandlers.put(302, InvalidCommand.class);
@@ -88,16 +89,20 @@ public class ResponseHandler extends Thread {
 							successful = false; // if any of the individual responses fail, the whole response fails.
 						}
 					}
-					// If couldn't find a response handler. We likely don't implement it!
 					catch(NoSuchMethodException ex) {
+						successful = false; 
 					}
 					catch (InstantiationException e) {
+						successful = false; 
 					} 
 					catch (IllegalAccessException e) {
+						successful = false; 
 					}
 					catch (IllegalArgumentException e) {
+						successful = false; 
 					}
 					catch (InvocationTargetException e) {
+						successful = false; 
 					}
 				}
 			}
