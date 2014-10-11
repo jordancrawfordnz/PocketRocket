@@ -9,5 +9,6 @@
     <string name="server_port">Server Port</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="address_unresolvable">Unable to resolve the address</string>
 
 </resources>
