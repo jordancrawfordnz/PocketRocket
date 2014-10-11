@@ -5,9 +5,11 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sneakyrocket.pocketrocket.R;
 import com.sneakyrocket.pocketrocket.v1.remote.Server;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 public class Session {
 	private static Session instance = null;
@@ -64,7 +66,10 @@ public class Session {
 	// TODO Finish
 	public Bitmap getIcon(Script script)
 	{
-		throw new UnsupportedOperationException();
+		//Returns a default image for testing purposes
+		return BitmapFactory.decodeResource(
+				GlobalApplication.getInstance().getResources(),
+				R.drawable.ic_action_cast);
 	}
 
 }
