@@ -17,7 +17,7 @@ public class Session {
 		instance = session;
 	}
 	
-	public synchronized Session getCurrentSession(Session session)
+	public synchronized Session getCurrentSession()
 	{
 		return instance;
 	}
