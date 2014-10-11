@@ -83,6 +83,7 @@ public class ServerBrowserActivity extends ActionBarActivity {
 			TextView serverDetails = (TextView) serverView.findViewById(R.id.serverDetails);
 			serverName.setText(server.getName());
 			serverDetails.setText(server.getAddress() + ":" + server.getPort());
+			serverView.setOnClickListener(new ServerClickListener(server));
 			adapter.addView(serverView);
 		}
 }
