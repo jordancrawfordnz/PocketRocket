@@ -4,7 +4,7 @@ import com.sneakyrocket.pocketrocket.v1.core.Connection;
 
 public abstract class Command {
 	
-	private Connection connection;
+	protected Connection connection;
 	
 	public Command(Connection connection)
 	{
