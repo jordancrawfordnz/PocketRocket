@@ -26,11 +26,10 @@ public class ScriptListingActivity extends ActionBarActivity {
 	/**
 	 * Creates a new activity to show the list of scripts available in the
 	 * current session.
-	 * @param session the session from which the scripts are to be run
 	 */
-	public ScriptListingActivity(Session session) {
-		this.session = session;
+	public ScriptListingActivity() {
 		adapter = new BasicListAdapter();
+		session = Session.getCurrentSession();
 	}
 	
 	@Override
