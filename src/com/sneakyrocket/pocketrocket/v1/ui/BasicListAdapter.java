@@ -1,4 +1,4 @@
-package com.sneakyrocket.pocketrocket.v1.ui.server;
+package com.sneakyrocket.pocketrocket.v1.ui;
 
 import java.util.ArrayList;
 import java.util.List;

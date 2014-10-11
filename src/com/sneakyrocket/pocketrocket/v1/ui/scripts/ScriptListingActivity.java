@@ -1,9 +1,9 @@
-package com.sneakyrocket.pocketrocket.v1.ui;
+package com.sneakyrocket.pocketrocket.v1.ui.scripts;
 
 import com.sneakyrocket.pocketrocket.R;
 import com.sneakyrocket.pocketrocket.v1.core.Script;
 import com.sneakyrocket.pocketrocket.v1.core.Session;
-import com.sneakyrocket.pocketrocket.v1.ui.server.BasicListAdapter;
+import com.sneakyrocket.pocketrocket.v1.ui.BasicListAdapter;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
