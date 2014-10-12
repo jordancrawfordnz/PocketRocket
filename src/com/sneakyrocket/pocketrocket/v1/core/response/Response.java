@@ -2,12 +2,10 @@ package com.sneakyrocket.pocketrocket.v1.core.response;
 
 import com.sneakyrocket.pocketrocket.v1.core.Connection;
 
-public abstract class Response implements Runnable {
-	protected volatile Object lock;
+public abstract class Response {
 	protected String args;
 	protected Connection connection;
 	protected Response nextResponse;
-	protected boolean finished;
 	
 	// Args is anything after the ":" in the string
 	public Response(String args, Connection connection) {
@@ -17,15 +15,13 @@ public abstract class Response implements Runnable {
 		this.connection = connection;
 		this.nextResponse = null;
 	}
-
-	// handles itself
-	public void run() {
-		synchronized (lock) {
-			finished = true;
-		}
+	
+	public void process() {
+		nextResponse = ResponseHandler.getInstance().getResponse(connection);
+		nextResponse.process();
 	}
 
 	public Response getNext() {
-		return ResponseHandler.getInstance().getResponse(connection);
+		return nextResponse;
 	}
 }

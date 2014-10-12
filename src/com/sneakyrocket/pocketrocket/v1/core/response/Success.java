@@ -8,11 +8,10 @@ public class Success extends Response {
 		super(args, connection);
 	}
 
-	// TODO Display message to user in run method?
-
 	@Override
-	public Response getNext() {
-		return null;
+	public void process() {
+		// TODO Display message to user?
+		// Does the connection need to be closed here?
 	}
 	
 	public String getMessage() {

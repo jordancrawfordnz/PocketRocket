@@ -8,8 +8,9 @@ public class Failure extends Response {
 	}
 
 	@Override
-	public void run() {
+	public void process() {
 		// TODO Display toast to user
+		super.process();
 	}
 	
 	public String getMessage() {

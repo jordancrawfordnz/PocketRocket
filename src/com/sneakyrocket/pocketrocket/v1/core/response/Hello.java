@@ -11,16 +11,12 @@ public class Hello extends Response {
 	}
 
 	@Override
-	public void run() {
-		synchronized (lock) {
-			port = Integer.parseInt(args);
-			finished = true;
-		}
+	public void process() {
+		port = Integer.parseInt(args);
+		super.process();
 	}
 	
 	public int getPort() {
-		synchronized (lock) {
-			return port;
-		}
+		return port;
 	}
 }

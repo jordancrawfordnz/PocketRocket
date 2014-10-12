@@ -13,8 +13,9 @@ public class OkText extends Response {
 	}
 
 	@Override
-	public void run() {
+	public void process() {
 		// TODO Read text from connection, then finish
+		super.process();
 	}
 	
 	public BufferedReader getReader() {
