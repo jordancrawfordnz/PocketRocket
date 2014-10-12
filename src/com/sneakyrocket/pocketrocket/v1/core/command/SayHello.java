@@ -18,15 +18,16 @@ public class SayHello extends Command{
 	
 	public int getPort()
 	{
+		if(!connection.sendRequest("hello"))
+			throw new CommandFailureException();
 		ResponseHandler handler = ResponseHandler.getInstance();
 		Response firstResponse = handler.getResponse(connection);
 		if(firstResponse instanceof Hello)
 		{
+			firstResponse.process();
 			return ((Hello)firstResponse).getPort();
 		}
 		else
-		{
 			throw new CommandFailureException();
-		}
 	}
 }
