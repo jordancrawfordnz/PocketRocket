@@ -20,6 +20,8 @@ public class Server {
 	 * @param port - the port of the server
 	 */
 	public Server(String name, String address, int port) {
+		if(name == null || address == null)
+			throw new IllegalArgumentException();
 		this.name = name;
 		this.address = address;
 		this.port = port;
