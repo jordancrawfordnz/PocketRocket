@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.net.UnknownHostException;
 
 import com.sneakyrocket.pocketrocket.R;
+import com.sneakyrocket.pocketrocket.v1.core.Server;
 import com.sneakyrocket.pocketrocket.v1.core.Session;
-import com.sneakyrocket.pocketrocket.v1.remote.Server;
 import com.sneakyrocket.pocketrocket.v1.ui.scripts.ScriptListingActivity;
 
 import android.content.Context;

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sneakyrocket.pocketrocket.R;
-import com.sneakyrocket.pocketrocket.v1.remote.Server;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
