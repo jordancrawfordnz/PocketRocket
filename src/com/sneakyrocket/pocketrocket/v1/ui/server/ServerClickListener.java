@@ -6,6 +6,7 @@ import java.net.UnknownHostException;
 import com.sneakyrocket.pocketrocket.R;
 import com.sneakyrocket.pocketrocket.v1.core.Server;
 import com.sneakyrocket.pocketrocket.v1.core.Session;
+import com.sneakyrocket.pocketrocket.v1.core.command.CommandFailureException;
 import com.sneakyrocket.pocketrocket.v1.ui.scripts.ScriptListingActivity;
 
 import android.content.Context;
@@ -30,10 +31,11 @@ public class ServerClickListener implements OnClickListener{
 			Session.setCurrentSession(session);
 			Intent intent = new Intent(context, ScriptListingActivity.class);
 			context.startActivity(intent);
+		} catch(CommandFailureException e) {
+			Toast.makeText(context, R.string.host_unreachable, Toast.LENGTH_LONG).show();
 		} catch(UnknownHostException e) {
 			Toast.makeText(context, R.string.address_unresolvable, Toast.LENGTH_LONG).show();
-		}
-		catch(IOException e) {
+		} catch(IOException e) {
 			Toast.makeText(context, R.string.io_error_occured, Toast.LENGTH_LONG).show();
 		}
 	}
