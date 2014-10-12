@@ -1,19 +1,26 @@
 package com.sneakyrocket.pocketrocket.v1.core.response;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import com.sneakyrocket.pocketrocket.v1.core.Connection;
 
 public class Hello extends Response {
-	public Hello(String args, InputStream response, OutputStream command)
-	{
-		super(args, response, command);
+	private int port;
+	
+	public Hello(String args, Connection connection) {
+		super(args, connection);
+		port = -1;
+	}
+
+	@Override
+	public void run() {
+		synchronized (lock) {
+			port = Integer.parseInt(args);
+			finished = true;
+		}
 	}
 	
-	public boolean handleResponse() throws IOException
-	{
-		// Response is in form: 420 hello:[port]
-		command.write(args.getBytes());
-		return false;
+	public int getPort() {
+		synchronized (lock) {
+			return port;
+		}
 	}
 }

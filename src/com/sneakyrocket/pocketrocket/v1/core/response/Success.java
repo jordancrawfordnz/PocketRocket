@@ -1,17 +1,21 @@
 package com.sneakyrocket.pocketrocket.v1.core.response;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import com.sneakyrocket.pocketrocket.v1.core.Connection;
 
 public class Success extends Response {
-	public Success(String args, InputStream response, OutputStream command)
+	public Success(String args, Connection connection)
 	{
-		super(args, response, command);
+		super(args, connection);
+	}
+
+	// TODO Display message to user in run method?
+
+	@Override
+	public Response getNext() {
+		return null;
 	}
 	
-	public boolean handleResponse() throws IOException
-	{
-		return false;
+	public String getMessage() {
+		return args;
 	}
 }

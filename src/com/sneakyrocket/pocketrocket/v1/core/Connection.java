@@ -6,12 +6,9 @@ import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 
-import com.sneakyrocket.pocketrocket.v1.core.response.ResponseHandler;
-
 public class Connection {
 	
 	private Socket socket;
-	private ResponseHandler responseHandler = null;
 	
 	// Gives the network input stream to the handler and an output stream for the handlers response.
 	// The handlers response goes to the command through an input stream.
@@ -20,11 +17,6 @@ public class Connection {
 		if(server == null)
 			throw new IllegalArgumentException();
 		this.socket = new Socket(server, port);
-	}
-	
-	public ResponseHandler getResponseHandler()
-	{
-		return responseHandler;
 	}
 	
 	public void close()
@@ -45,8 +37,6 @@ public class Connection {
 				return false;
 			}
 			socket.getOutputStream().write((request + "\n").getBytes()); // send the request to the server
-			responseHandler = new ResponseHandler(socket.getInputStream(), this);
-			responseHandler.start(); // start the ResponseHandler going in a new thread!
 		}
 		catch (IOException ex)
 		{

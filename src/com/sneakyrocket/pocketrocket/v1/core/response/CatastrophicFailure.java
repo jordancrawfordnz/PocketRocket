@@ -1,17 +1,12 @@
 package com.sneakyrocket.pocketrocket.v1.core.response;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import com.sneakyrocket.pocketrocket.v1.core.Connection;
 
 public class CatastrophicFailure extends Response {
-	public CatastrophicFailure(String args, InputStream response, OutputStream command)
+	public CatastrophicFailure(String args, Connection connection)
 	{
-		super(args, response, command);
+		super(args, connection);
 	}
 	
-	public boolean handleResponse() throws IOException
-	{
-		throw new ResponseFailureException();
-	}
+	//TODO: Display toast to user on run?
 }

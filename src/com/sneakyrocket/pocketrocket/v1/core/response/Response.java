@@ -1,23 +1,31 @@
 package com.sneakyrocket.pocketrocket.v1.core.response;
 
-import java.io.*;
+import com.sneakyrocket.pocketrocket.v1.core.Connection;
 
-public abstract class Response {
+public abstract class Response implements Runnable {
+	protected volatile Object lock;
 	protected String args;
-	protected InputStream response;
-	protected OutputStream command;
+	protected Connection connection;
+	protected Response nextResponse;
+	protected boolean finished;
 	
 	// Args is anything after the ":" in the string
-	public Response(String args, InputStream response, OutputStream command)
-	{
-		if(args == null || response == null)
+	public Response(String args, Connection connection) {
+		if(args == null || connection == null)
 			throw new IllegalArgumentException();
 		this.args = args;
-		this.response = response;
-		this.command = command;
+		this.connection = connection;
+		this.nextResponse = null;
 	}
 
-	// Returns true if end of response chain (and no more lines need handling), false otherwise.
-	public abstract boolean handleResponse() throws IOException;
+	// handles itself
+	public void run() {
+		synchronized (lock) {
+			finished = true;
+		}
+	}
 
+	public Response getNext() {
+		return ResponseHandler.getInstance().getResponse(connection);
+	}
 }

@@ -1,19 +1,23 @@
 package com.sneakyrocket.pocketrocket.v1.core.response;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.BufferedReader;
+
+import com.sneakyrocket.pocketrocket.v1.core.Connection;
 
 public class OkText extends Response {
-	public OkText(String args, InputStream response, OutputStream command)
+	private BufferedReader reader;
+	
+	public OkText(String args, Connection connection)
 	{
-		super(args, response, command);
+		super(args, connection);
+	}
+
+	@Override
+	public void run() {
+		// TODO Read text from connection, then finish
 	}
 	
-	public boolean handleResponse() throws IOException
-	{
-		// Takes over response until an end of transmission character is received.
-		
-		return false;
+	public BufferedReader getReader() {
+		return reader;
 	}
 }
