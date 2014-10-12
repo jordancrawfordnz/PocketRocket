@@ -7,7 +7,7 @@ public class Script {
 	private String name;
 	private Session session;
 	
-	// TODO How to handle a class that an instance is created of but it doesn't exist (or no longer exists)
+	// TODO How to handle a case that an instance is created of but it doesn't exist (or no longer exists)
 	
 	public Script(Session session, String name)
 	{
