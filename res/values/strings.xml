@@ -10,5 +10,6 @@
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="address_unresolvable">Unable to resolve the address</string>
+    <string name="io_error_occured">An input/output problem occured.</string>
 
 </resources>

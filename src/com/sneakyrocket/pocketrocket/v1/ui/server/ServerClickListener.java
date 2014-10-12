@@ -1,5 +1,6 @@
 package com.sneakyrocket.pocketrocket.v1.ui.server;
 
+import java.io.IOException;
 import java.net.UnknownHostException;
 
 import com.sneakyrocket.pocketrocket.R;
@@ -31,6 +32,9 @@ public class ServerClickListener implements OnClickListener{
 			context.startActivity(intent);
 		} catch(UnknownHostException e) {
 			Toast.makeText(context, R.string.address_unresolvable, Toast.LENGTH_LONG).show();
+		}
+		catch(IOException e) {
+			Toast.makeText(context, R.string.io_error_occured, Toast.LENGTH_LONG).show();
 		}
 	}
 }
