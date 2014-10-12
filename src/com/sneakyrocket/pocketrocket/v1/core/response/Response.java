@@ -18,7 +18,8 @@ public abstract class Response {
 	
 	public void process() {
 		nextResponse = ResponseHandler.getInstance().getResponse(connection);
-		nextResponse.process();
+		if(nextResponse != null)
+			nextResponse.process();
 	}
 
 	public Response getNext() {
