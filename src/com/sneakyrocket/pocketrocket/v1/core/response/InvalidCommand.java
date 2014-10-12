@@ -1,17 +1,9 @@
 package com.sneakyrocket.pocketrocket.v1.core.response;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import com.sneakyrocket.pocketrocket.v1.core.Connection;
 
 public class InvalidCommand extends Response {
-	public InvalidCommand(String args, InputStream response, OutputStream command)
-	{
-		super(args, response, command);
-	}
-	
-	public boolean handleResponse() throws IOException
-	{
-		throw new ResponseFailureException();
+	public InvalidCommand(String args, Connection connection) {
+		super(args, connection);
 	}
 }

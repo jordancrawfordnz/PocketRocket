@@ -1,17 +1,14 @@
 package com.sneakyrocket.pocketrocket.v1.core.response;
 
-import java.io.InputStream;
-import java.io.OutputStream;
+import com.sneakyrocket.pocketrocket.v1.core.Connection;
 
 public class Done extends Response {
-	public Done(String args, InputStream response, OutputStream command)
-	{
-		super(args, response, command);
+	public Done(String args, Connection connection) {
+		super(args, connection);
 	}
-	
-	public boolean handleResponse()
-	{
-		return true;
+
+	@Override
+	public void process() {
+		connection.close();
 	}
-	
 }
