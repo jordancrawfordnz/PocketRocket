@@ -39,8 +39,7 @@ public class ResponseHandler {
 	{
 		try
 		{
-			BufferedReader reader = new BufferedReader(
-					new InputStreamReader(connection.getNetworkInput()));
+			BufferedReader reader = connection.getNetworkInput();
 			String responseLine = reader.readLine();
 			
 			//Should this limit be 2 or 1?
