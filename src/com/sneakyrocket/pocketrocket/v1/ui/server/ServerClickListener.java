@@ -11,6 +11,7 @@ import com.sneakyrocket.pocketrocket.v1.ui.scripts.ScriptListingActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
@@ -37,6 +38,7 @@ public class ServerClickListener implements OnClickListener{
 			Toast.makeText(context, R.string.address_unresolvable, Toast.LENGTH_LONG).show();
 		} catch(IOException e) {
 			Toast.makeText(context, R.string.io_error_occured, Toast.LENGTH_LONG).show();
+			Log.d(context.getResources().getString(R.string.app_name), e.getMessage());
 		}
 	}
 }
