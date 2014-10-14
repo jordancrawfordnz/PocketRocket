@@ -19,6 +19,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/newServerName"
         android:ems="10"
+        android:inputType="textVisiblePassword"
         android:hint="@string/server_address" />
 
     <EditText
