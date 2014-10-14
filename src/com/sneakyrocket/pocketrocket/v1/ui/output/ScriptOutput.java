@@ -12,7 +12,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 public class ScriptOutput implements Runnable {
-	private TextView view;
+	private final TextView view;
 	private Script target;
 	private BufferedReader reader;
 	private boolean finished = false;
@@ -31,10 +31,13 @@ public class ScriptOutput implements Runnable {
 				String line = reader.readLine();
 				if (line != null) {
 					output.append(line);
-					view.setText(output.toString());
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {}
+					output.append('\n');
+					view.post(new Runnable(){
+						@Override
+						public void run() {
+							view.setText(output.toString());
+						}
+					});
 				}
 				else
 					finished = true;
