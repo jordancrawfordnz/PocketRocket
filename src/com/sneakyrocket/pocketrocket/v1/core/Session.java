@@ -47,8 +47,9 @@ public class Session {
 		try
 		{
 			Run run = new Run(new Connection(server, port),script);
+			BufferedReader toReturn = run.getStream();
 			new Thread(run).start();
-			return run.getStream();
+			return toReturn;
 		}
 		catch(IOException ex)
 		{
