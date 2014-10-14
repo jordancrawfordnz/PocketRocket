@@ -54,7 +54,11 @@ public class ListScripts extends Command{
 			}
 		}
 		else
+		{
+			Log.e(GlobalApplication.getInstance().getResources()
+					.getString(R.string.app_name), "Tried to launch: " + firstResponse.getClass().toString());
 			throw new CommandFailureException();
+		}
 		return scriptList;
 	}
 	
