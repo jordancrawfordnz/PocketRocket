@@ -5,11 +5,7 @@ import java.io.IOException;
 import java.io.PipedReader;
 import java.io.PipedWriter;
 
-import android.util.Log;
-
-import com.sneakyrocket.pocketrocket.R;
 import com.sneakyrocket.pocketrocket.v1.core.Connection;
-import com.sneakyrocket.pocketrocket.v1.core.GlobalApplication;
 
 public class OkText extends Response {
 	private BufferedReader reader;
@@ -37,8 +33,6 @@ public class OkText extends Response {
 			}
 			pipedWriter.close();
 		} catch (IOException e) {
-			Log.d(GlobalApplication.getInstance().getResources()
-					.getString(R.string.app_name), e.getMessage());
 			throw new ResponseFailureException();
 		}
 		super.process();
