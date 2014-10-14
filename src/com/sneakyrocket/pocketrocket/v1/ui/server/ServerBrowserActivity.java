@@ -1,7 +1,7 @@
 package com.sneakyrocket.pocketrocket.v1.ui.server;
 
 import com.sneakyrocket.pocketrocket.R;
-import com.sneakyrocket.pocketrocket.v1.remote.Server;
+import com.sneakyrocket.pocketrocket.v1.core.Server;
 import com.sneakyrocket.pocketrocket.v1.ui.BasicListAdapter;
 
 import android.app.AlertDialog;

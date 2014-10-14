@@ -1,12 +1,12 @@
 package com.sneakyrocket.pocketrocket.v1.core;
 
+import java.io.IOException;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.sneakyrocket.pocketrocket.R;
-import com.sneakyrocket.pocketrocket.v1.remote.Server;
+import com.sneakyrocket.pocketrocket.v1.core.command.SayHello;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,6 +15,7 @@ public class Session {
 	private static Session instance = null;
 	
 	private InetAddress server;
+	private int port;
 	
 	public static synchronized void setCurrentSession(Session session)
 	{
@@ -26,7 +27,7 @@ public class Session {
 		return instance;
 	}
 	
-	public Session(Server target) throws UnknownHostException
+	public Session(Server target) throws IOException
 	{
 		if(target == null)
 		{
@@ -34,8 +35,9 @@ public class Session {
 		}
 		this.server = InetAddress.getByName(target.getAddress());
 		
-		// TODO Create a ServerListingActivity
-		// TODO Determine port for session to communicate on.
+		Connection connection = new Connection(server, target.getPort());
+		SayHello hello = new SayHello(connection);
+		port = hello.getPort();
 	}
 	
 	// TODO Finish

@@ -41,6 +41,8 @@ public class ResponseHandler {
 		{
 			BufferedReader reader = connection.getNetworkInput();
 			String responseLine = reader.readLine();
+			if (responseLine == null)
+				return null;
 			
 			//Should this limit be 2 or 1?
 			String[] splitResponse = responseLine.split(" ",2);

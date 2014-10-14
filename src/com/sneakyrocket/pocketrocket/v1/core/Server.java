@@ -1,4 +1,4 @@
-package com.sneakyrocket.pocketrocket.v1.remote;
+package com.sneakyrocket.pocketrocket.v1.core;
 
 /**
  * This class provides all the necessary information about a
