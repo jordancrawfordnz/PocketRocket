@@ -52,6 +52,8 @@ public class Session {
 		}
 		catch(IOException ex)
 		{
+			Log.d(GlobalApplication.getInstance().getResources()
+					.getString(R.string.app_name), ex.getMessage());
 			throw new CommandFailureException();
 		}
 	}
@@ -65,6 +67,8 @@ public class Session {
 		}
 		catch(IOException ex)
 		{
+			Log.d(GlobalApplication.getInstance().getResources()
+					.getString(R.string.app_name), ex.getMessage());
 			throw new CommandFailureException();
 		}
 	}
@@ -75,6 +79,8 @@ public class Session {
 			ArrayList<Script> toReturn = new ListScripts(new Connection(server,port)).getSripts();
 			return toReturn;
 		} catch (IOException e) {
+			Log.d(GlobalApplication.getInstance().getResources()
+					.getString(R.string.app_name), e.getMessage());
 			throw new CommandFailureException();
 		}
 	}

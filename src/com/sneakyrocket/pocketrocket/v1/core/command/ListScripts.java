@@ -1,6 +1,10 @@
 package com.sneakyrocket.pocketrocket.v1.core.command;
 
+import android.util.Log;
+
+import com.sneakyrocket.pocketrocket.R;
 import com.sneakyrocket.pocketrocket.v1.core.Connection;
+import com.sneakyrocket.pocketrocket.v1.core.GlobalApplication;
 import com.sneakyrocket.pocketrocket.v1.core.Script;
 import com.sneakyrocket.pocketrocket.v1.core.Session;
 import com.sneakyrocket.pocketrocket.v1.core.response.Hello;
@@ -44,6 +48,8 @@ public class ListScripts extends Command{
 			}
 			catch(IOException ex)
 			{
+				Log.d(GlobalApplication.getInstance().getResources()
+						.getString(R.string.app_name), ex.getMessage());
 				throw new CommandFailureException();
 			}
 		}
