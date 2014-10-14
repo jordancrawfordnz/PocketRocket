@@ -1,8 +1,11 @@
 package com.sneakyrocket.pocketrocket.v1.core.response;
 
+import android.util.Log;
 import android.util.SparseArray;
 
+import com.sneakyrocket.pocketrocket.R;
 import com.sneakyrocket.pocketrocket.v1.core.Connection;
+import com.sneakyrocket.pocketrocket.v1.core.GlobalApplication;
 
 import java.io.*;
 import java.lang.reflect.Constructor;
@@ -42,7 +45,13 @@ public class ResponseHandler {
 			BufferedReader reader = connection.getNetworkInput();
 			String responseLine = reader.readLine();
 			if (responseLine == null)
+			{
+				Log.d(GlobalApplication.getInstance().getResources()
+						.getString(R.string.app_name), "End of transmission");
 				return null;
+			}
+			Log.d(GlobalApplication.getInstance().getResources()
+					.getString(R.string.app_name), responseLine);
 			
 			//Should this limit be 2 or 1?
 			String[] splitResponse = responseLine.split(" ",2);
