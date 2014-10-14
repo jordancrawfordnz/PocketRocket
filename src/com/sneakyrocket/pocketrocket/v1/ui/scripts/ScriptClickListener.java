@@ -2,7 +2,11 @@ package com.sneakyrocket.pocketrocket.v1.ui.scripts;
 
 import com.sneakyrocket.pocketrocket.v1.core.Script;
 import com.sneakyrocket.pocketrocket.v1.core.Session;
+import com.sneakyrocket.pocketrocket.v1.core.GlobalApplication;
+import com.sneakyrocket.pocketrocket.v1.ui.output.ScriptOutputActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -28,7 +32,9 @@ public class ScriptClickListener implements OnClickListener {
 	
 	@Override
 	public void onClick(View view) {
-		// TODO Run script in new activity
-		
+		Context context = GlobalApplication.getInstance();
+		Intent intent = new Intent(context, ScriptOutputActivity.class);
+		intent.putExtra("Script", script.getName());
+		context.startActivity(intent);
 	}
 }
