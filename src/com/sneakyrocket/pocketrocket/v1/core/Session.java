@@ -56,10 +56,17 @@ public class Session {
 		}
 	}
 	
-	// TODO Finish
 	public void killScript(Script script)
 	{
-		
+		try
+		{
+			Kill kill = new Kill(new Connection(server, port),script);
+			kill.kill();
+		}
+		catch(IOException ex)
+		{
+			throw new CommandFailureException();
+		}
 	}
 	
 	public ArrayList<Script> listScripts()
