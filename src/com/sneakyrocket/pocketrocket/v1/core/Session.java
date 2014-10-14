@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sneakyrocket.pocketrocket.R;
-import com.sneakyrocket.pocketrocket.v1.core.command.SayHello;
+import com.sneakyrocket.pocketrocket.v1.core.command.*;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -52,17 +52,14 @@ public class Session {
 		
 	}
 	
-	// TODO Finish
-	public List<Script> listScripts()
+	public ArrayList<Script> listScripts()
 	{
-		// return some hard coded values for testing purposes
-		ArrayList<Script> toReturn = new ArrayList<Script>();
-		toReturn.add(new Script(this, "RestartApache"));
-		toReturn.add(new Script(this, "RestartComputer"));
-		toReturn.add(new Script(this, "NextSong"));
-		toReturn.add(new Script(this, "RmRfAllFiles"));
-		
-		return (List<Script>) toReturn;
+		try {
+			ArrayList<Script> toReturn = new ListScripts(new Connection(server,port)).getSripts();
+			return toReturn;
+		} catch (IOException e) {
+			throw new CommandFailureException();
+		}
 	}
 	
 	// TODO Finish
