@@ -48,11 +48,12 @@ public class ScriptListingActivity extends ActionBarActivity {
 	 * @param script the script to be added
 	 */
 	public void addScript(Script script) {
-		View serverView = getLayoutInflater().inflate(R.layout.script_layout, scriptListView, false);
-		TextView scriptName = (TextView) serverView.findViewById(R.id.scriptName);
-		ImageView scriptIcon = (ImageView) serverView.findViewById(R.id.scriptIcon);
+		View scriptView = getLayoutInflater().inflate(R.layout.script_layout, scriptListView, false);
+		TextView scriptName = (TextView) scriptView.findViewById(R.id.scriptName);
+		ImageView scriptIcon = (ImageView) scriptView.findViewById(R.id.scriptIcon);
 		scriptName.setText(script.getName());
 		scriptIcon.setImageBitmap(script.getIcon());
-		adapter.addView(serverView);
+		scriptView.setOnClickListener(new ScriptClickListener(session, script));
+		adapter.addView(scriptView);
 	}
 }
