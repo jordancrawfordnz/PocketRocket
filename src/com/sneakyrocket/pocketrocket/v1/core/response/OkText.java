@@ -31,6 +31,7 @@ public class OkText extends Response {
 				if(incomingChar == 27) break;
 				pipedWriter.write(incomingChar);
 			}
+			pipedWriter.close();
 		} catch (IOException e) {
 			throw new ResponseFailureException();
 		}
