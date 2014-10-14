@@ -28,7 +28,7 @@ public class Run extends Command implements Runnable
 	{
 		if(stream == null)
 		{
-			if(!connection.sendRequest("run " + script.getName()))
+			if(!connection.sendRequest("runScript " + script.getName()))
 				throw new CommandFailureException();
 			ResponseHandler handler = ResponseHandler.getInstance();
 			Response firstResponse = handler.getResponse(connection);
