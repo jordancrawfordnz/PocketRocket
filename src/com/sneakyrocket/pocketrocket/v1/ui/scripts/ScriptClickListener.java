@@ -32,7 +32,7 @@ public class ScriptClickListener implements OnClickListener {
 	
 	@Override
 	public void onClick(View view) {
-		Context context = GlobalApplication.getInstance();
+		Context context = view.getContext();
 		Intent intent = new Intent(context, ScriptOutputActivity.class);
 		intent.putExtra("Script", script.getName());
 		context.startActivity(intent);
