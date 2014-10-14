@@ -14,7 +14,7 @@ public class Run extends Command implements Runnable
 {
 	private Script script;
 	private BufferedReader stream;
-	private OkText response;
+	private OkText response = null;
 	
 	public Run(Connection connection, Script script)
 	{
@@ -45,6 +45,7 @@ public class Run extends Command implements Runnable
 
 	@Override
 	public void run() {
-		response.process();
+		if(response != null)
+			response.process();
 	}
 }

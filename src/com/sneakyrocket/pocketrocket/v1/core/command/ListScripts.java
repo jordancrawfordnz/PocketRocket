@@ -28,14 +28,13 @@ public class ListScripts extends Command{
 		
 		Session currentSession = Session.getCurrentSession();
 		ArrayList<Script> scriptList = new ArrayList<Script>();
+		firstResponse.process();
 		
 		if(firstResponse instanceof OkText)
 		{
 			OkText response = (OkText) firstResponse;
 			BufferedReader textOutput = response.getReader();
-			firstResponse.process();
-			String line;
-			
+			String line;	
 			try
 			{
 				while((line = textOutput.readLine()) != null)
