@@ -1,5 +1,6 @@
 package com.sneakyrocket.pocketrocket.v1.core;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import com.sneakyrocket.pocketrocket.v1.core.command.*;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 public class Session {
 	private static Session instance = null;
@@ -39,11 +41,19 @@ public class Session {
 		SayHello hello = new SayHello(connection);
 		port = hello.getPort();
 	}
-	
-	// TODO Finish
-	public void runScript(Script script)
+
+	public BufferedReader runScript(Script script)
 	{
-		
+		try
+		{
+			Run run = new Run(new Connection(server, port),script);
+			new Thread(run).start();
+			return run.getStream();
+		}
+		catch(IOException ex)
+		{
+			throw new CommandFailureException();
+		}
 	}
 	
 	// TODO Finish
