@@ -28,6 +28,6 @@ public class SayHello extends Command{
 			return ((Hello)firstResponse).getPort();
 		}
 		else
-			throw new CommandFailureException();
+			throw new CommandFailureException("Expected a hello, got " + firstResponse.getClass().toString());
 	}
 }

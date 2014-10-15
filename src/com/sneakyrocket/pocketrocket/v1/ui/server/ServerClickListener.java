@@ -34,11 +34,13 @@ public class ServerClickListener implements OnClickListener{
 			context.startActivity(intent);
 		} catch(CommandFailureException e) {
 			Toast.makeText(context, R.string.host_unreachable, Toast.LENGTH_LONG).show();
+			Log.e(context.getResources().getString(R.string.app_name), e.getMessage());
 		} catch(UnknownHostException e) {
 			Toast.makeText(context, R.string.address_unresolvable, Toast.LENGTH_LONG).show();
+			Log.e(context.getResources().getString(R.string.app_name), e.getMessage());
 		} catch(IOException e) {
 			Toast.makeText(context, R.string.io_error_occured, Toast.LENGTH_LONG).show();
-			Log.d(context.getResources().getString(R.string.app_name), e.getMessage());
+			Log.e(context.getResources().getString(R.string.app_name), e.getMessage());
 		}
 	}
 }
