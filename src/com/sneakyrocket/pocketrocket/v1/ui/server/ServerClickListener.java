@@ -16,14 +16,28 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
+/**
+ * A class to listen for and handle clicks on a server view
+ * @author Andrew
+ *
+ */
 public class ServerClickListener implements OnClickListener{
 	private Server server;
 	
+	/**
+	 * Creates a new listener from the given parameters.
+	 * @param server the server that this listener is associated with
+	 */
 	public ServerClickListener(Server server) {
 		this.server = server;
 	}
 
 	@Override
+	/**
+	 * Tries to start a new session with the associated server, and launch a new
+	 * ScriptOutputActivity to display the session.
+	 * @param view the view that was clicked
+	 */
 	public void onClick(View view) {
 		Context context = view.getContext();
 		

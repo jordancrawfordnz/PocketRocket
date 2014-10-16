@@ -9,11 +9,24 @@ import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ * A class to handle adding new servers and to validate user
+ * input when creating new servers.
+ * @author Andrew
+ *
+ */
 public class ServerValidator implements OnClickListener {
 	private View dialogView;
 	private ServerBrowserActivity target;
 	private Server server = null;
 	
+	/**
+	 * Creates a new validator that handles adding servers for the
+	 * given ServerBrowserActivity, with input from the dialog view
+	 * provided.
+	 * @param dialogView the view from which the server details are read
+	 * @param target the activity to which valid servers are added
+	 */
 	public ServerValidator(View dialogView, ServerBrowserActivity target) {
 		this.dialogView = dialogView;
 		this.target = target;
@@ -41,6 +54,10 @@ public class ServerValidator implements OnClickListener {
 		}
 	}
 	
+	/**
+	 * A method to handle sanitizing the server. Currently performs no
+	 * checks on the server.
+	 */
 	public void validate(){
 		target.addServer(server);
 	}

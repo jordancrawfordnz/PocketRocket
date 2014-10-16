@@ -23,8 +23,10 @@ import android.widget.TextView;
 public class ServerBrowserActivity extends ActionBarActivity {
 	private BasicListAdapter adapter;
 	private ListView serverListView;
-	//TODO: add member variables as classes are made
 	
+	/**
+	 * Creates a new ServerBrowserActivity.
+	 */
 	public ServerBrowserActivity() {
 		adapter = new BasicListAdapter();
 	}
@@ -78,6 +80,10 @@ public class ServerBrowserActivity extends ActionBarActivity {
 			}
 		}
 		
+		/**
+		 * Creates a view from the given server, and adds it to the display.
+		 * @param server the server to be added
+		 */
 		public void addServer(Server server) {
 			View serverView = getLayoutInflater().inflate(R.layout.server_layout, serverListView, false);
 			TextView serverName = (TextView) serverView.findViewById(R.id.serverName);
