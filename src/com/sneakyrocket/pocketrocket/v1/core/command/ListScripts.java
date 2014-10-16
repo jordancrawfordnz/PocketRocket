@@ -7,7 +7,6 @@ import com.sneakyrocket.pocketrocket.v1.core.Connection;
 import com.sneakyrocket.pocketrocket.v1.core.GlobalApplication;
 import com.sneakyrocket.pocketrocket.v1.core.Script;
 import com.sneakyrocket.pocketrocket.v1.core.Session;
-import com.sneakyrocket.pocketrocket.v1.core.response.Hello;
 import com.sneakyrocket.pocketrocket.v1.core.response.OkText;
 import com.sneakyrocket.pocketrocket.v1.core.response.Response;
 import com.sneakyrocket.pocketrocket.v1.core.response.ResponseHandler;
@@ -16,12 +15,24 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Gets the list of scripts the server supports.
+ * @author Jordan Crawford
+ *
+ */
 public class ListScripts extends Command{
 	public ListScripts(Connection connection)
 	{
 		super(connection);
 	}
 	
+	/**
+	 * Sends the request. Starts the response handling.
+	 * When a response is available, checks it is of the correct type,
+	 * then reads each line of text recieved.
+	 * Makes a new Script object for each name of script, and returns these as a list.
+	 * @return
+	 */
 	public ArrayList<Script> getSripts()
 	{
 		// Send off the request to the server.

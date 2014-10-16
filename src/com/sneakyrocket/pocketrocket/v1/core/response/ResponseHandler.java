@@ -11,11 +11,19 @@ import java.io.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
+/**
+ * Reads the connection to determine the appropriate response, then creates the response after parsing its arguments.
+ * @author Jordan Crawford
+ *
+ */
 public class ResponseHandler {
 	private static ResponseHandler instance;
 
 	private SparseArray<Class<? extends Response>> responses = null;
 	
+	/**
+	 * Sets up the list of known responses
+	 */
 	private ResponseHandler()
 	{
 		responses = new SparseArray<Class<? extends Response>>();
@@ -30,6 +38,11 @@ public class ResponseHandler {
 		responses.put(420, Hello.class);
 	}
 	
+	/**
+	 * If an instance does not exist, creates one.
+	 * Returns the response handler.
+	 * @return
+	 */
 	public static ResponseHandler getInstance()
 	{
 		if(instance == null)
@@ -38,6 +51,13 @@ public class ResponseHandler {
 		return instance;
 	}
 	
+	/**
+	 * Reads the connection.
+	 * Determines the code of the response and the arguments section (anything after ":").
+	 * Creates the relevant response handler.
+	 * @param connection
+	 * @return
+	 */
 	public Response getResponse(Connection connection)
 	{
 		try
@@ -53,7 +73,6 @@ public class ResponseHandler {
 			Log.d(GlobalApplication.getInstance().getResources()
 					.getString(R.string.app_name), responseLine);
 			
-			//Should this limit be 2 or 1?
 			String[] splitResponse = responseLine.split(" ",2);
 			String textCode = splitResponse[0];
 			

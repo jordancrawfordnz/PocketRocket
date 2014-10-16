@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.sneakyrocket.pocketrocket.R;
 import com.sneakyrocket.pocketrocket.v1.core.command.*;
@@ -13,6 +12,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
+/**
+ * The controlling interface between the UI and the server connection.
+ * @author Jordan Crawford
+ * @author Andrew Williamson
+ *
+ */
 public class Session {
 	private static Session instance = null;
 	
@@ -29,6 +34,12 @@ public class Session {
 		return instance;
 	}
 	
+	/**
+	 * Given a Server, creates a session by connecting and sending the hello message.
+	 * The port provided in the response to the hello message is used for any subsequent connections.
+	 * @param target
+	 * @throws IOException
+	 */
 	public Session(Server target) throws IOException
 	{
 		if(target == null)
@@ -42,6 +53,13 @@ public class Session {
 		port = hello.getPort();
 	}
 
+	/**
+	 * Runs a script, providing the BufferedReader of the script.
+	 * Returns the BufferedReader before the script has finished running,
+	 * allowing UI threads to display the output in real time.
+	 * @param script
+	 * @return
+	 */
 	public BufferedReader runScript(Script script)
 	{
 		try
@@ -59,6 +77,10 @@ public class Session {
 		}
 	}
 	
+	/**
+	 * Request the server stops the prodivded script.
+	 * @param script
+	 */
 	public void killScript(Script script)
 	{
 		try
@@ -74,6 +96,10 @@ public class Session {
 		}
 	}
 	
+	/**
+	 * Gets the list of scripts the server can run
+	 * @return
+	 */
 	public ArrayList<Script> listScripts()
 	{
 		try {
@@ -86,6 +112,11 @@ public class Session {
 		}
 	}
 	
+	/**
+	 * Returns the Bitmap image for the requested script by requesting it from the server.
+	 * @param script
+	 * @return
+	 */
 	// TODO Finish
 	public Bitmap getIcon(Script script)
 	{

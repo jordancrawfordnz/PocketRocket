@@ -7,7 +7,11 @@ public abstract class Response {
 	protected Connection connection;
 	protected Response nextResponse;
 	
-	// Args is anything after the ":" in the string
+	/**
+	 * Sets up the response, storing its arguments, connection and the next response.
+	 * @param args
+	 * @param connection
+	 */
 	public Response(String args, Connection connection) {
 		if(args == null || connection == null)
 			throw new IllegalArgumentException();
@@ -16,12 +20,19 @@ public abstract class Response {
 		this.nextResponse = null;
 	}
 	
+	/**
+	 * Prepares the next response by getting the ResponseHandler to determine the next response for the connection.
+	 */
 	public void process() {
 		nextResponse = ResponseHandler.getInstance().getResponse(connection);
 		if(nextResponse != null)
 			nextResponse.process();
 	}
 
+	/**
+	 * Gets the next Response to be handled.
+	 * @return
+	 */
 	public Response getNext() {
 		return nextResponse;
 	}

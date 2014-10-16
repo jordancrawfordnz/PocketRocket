@@ -3,19 +3,21 @@ package com.sneakyrocket.pocketrocket.v1.core.command;
 import com.sneakyrocket.pocketrocket.v1.core.*;
 import com.sneakyrocket.pocketrocket.v1.core.response.*;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.util.List;
-
+/**
+ * Helps set up the session by saying "hello" to the server and getting the port number for further session communication.
+ * @author Jordan Crawford
+ *
+ */
 public class SayHello extends Command{
 	public SayHello(Connection connection)
 	{
 		super(connection);
 	}
 	
+	/**
+	 * Sends "hello" to the server and waits for a hello response. Returns the parsed port number to use for further session communications.
+	 * @return
+	 */
 	public int getPort()
 	{
 		if(!connection.sendRequest("hello"))
