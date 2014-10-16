@@ -31,6 +31,10 @@ public class ScriptClickListener implements OnClickListener {
 	
 	
 	@Override
+	/**
+	 * Runs the script associated with this listener in a new activity.
+	 * @param view the view that was clicked
+	 */
 	public void onClick(View view) {
 		Context context = view.getContext();
 		Intent intent = new Intent(context, ScriptOutputActivity.class);

@@ -8,21 +8,38 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 
+/**
+ * Generic adapter with the ability to dynamically add and remove
+ * a view of any type from the set of views.
+ * @author Andrew
+ *
+ */
 public class BasicListAdapter implements ListAdapter {
 	private List<View> items;
 	private List<DataSetObserver> observers;
 	
+	/**
+	 * Constructs a new adapter, and initializes its member variables.
+	 */
 	public BasicListAdapter() {
 		items = new ArrayList<View>();
 		observers = new ArrayList<DataSetObserver>();
 	}
 	
+	/**
+	 * Adds the given view to the set of views to be displayed.
+	 * @param view the view to be added
+	 */
 	public void addView(View view) {
 		items.add(view);
 		for (DataSetObserver observer : observers)
 			observer.onChanged();
 	}
 	
+	/**
+	 * Removes the given view from the set of views to be displayed
+	 * @param view the view to be removed
+	 */
 	public void removeView(View view) {
 		items.remove(view);
 		for (DataSetObserver observer : observers)
